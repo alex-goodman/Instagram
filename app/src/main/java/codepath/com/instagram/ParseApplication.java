@@ -3,7 +3,9 @@ package codepath.com.instagram;
 import android.app.Application;
 
 import com.parse.Parse;
+import com.parse.ParseObject;
 
+import codepath.com.instagram.models.Post;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 
@@ -11,6 +13,9 @@ public class ParseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        // register Post model
+        ParseObject.registerSubclass(Post.class);
 
         // debug logging
         Parse.setLogLevel(Parse.LOG_LEVEL_DEBUG);
