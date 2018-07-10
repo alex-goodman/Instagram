@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseUser;
 
 import java.util.List;
 
@@ -26,6 +27,7 @@ import codepath.com.instagram.models.Post;
 public class HomeActivity extends AppCompatActivity {
 
     @BindView(R.id.btCompose) Button btCompose;
+    @BindView(R.id.btLogout) Button btLogout;
 
     static final int REQUEST_CAMERA_PERMIT = 10;
 
@@ -47,6 +49,15 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 getCameraPermission();
                 Intent i = new Intent(context, NewPostActivity.class);
+                startActivity(i);
+            }
+        });
+
+        btLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ParseUser.logOut();
+                Intent i = new Intent(context, MainActivity.class);
                 startActivity(i);
             }
         });

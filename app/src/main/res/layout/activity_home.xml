@@ -8,10 +8,17 @@
 
     <Button
         android:id="@+id/btCompose"
-        android:layout_width="match_parent"
+        android:layout_width="187dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:text="Compose" />
+
+    <Button
+        android:id="@+id/btLogout"
+        android:layout_width="192dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:text="Log out" />
 
 </RelativeLayout>
