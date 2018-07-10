@@ -6,31 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
-    <EditText
-        android:id="@+id/etCaption"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="161dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Caption" />
-
     <Button
-        android:id="@+id/btPost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/etCaption"
-        android:layout_centerHorizontal="true"
-        android:text="Post!" />
-
-    <Button
-        android:id="@+id/btRefresh"
-        android:layout_width="wrap_content"
+        android:id="@+id/btCompose"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="69dp"
-        android:text="Refresh" />
+        android:text="Compose" />
+
 </RelativeLayout>
