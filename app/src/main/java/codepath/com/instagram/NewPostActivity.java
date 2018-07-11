@@ -63,8 +63,6 @@ public class NewPostActivity extends AppCompatActivity {
                 // we now have the file on disk
                 Bitmap takenImage = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
 
-                // TODO: resize the image here
-
                 // load the image into a preview
                 ivPreview.setImageBitmap(takenImage);
 
