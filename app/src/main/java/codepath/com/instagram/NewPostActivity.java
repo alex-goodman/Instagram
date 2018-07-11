@@ -74,6 +74,7 @@ public class NewPostActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         createPost(etCaption.getText().toString(), parseFile, ParseUser.getCurrentUser());
                         Intent i = new Intent(context, HomeActivity.class);
+                        i.putExtra("origin", "newPost");
                         startActivity(i);
                     }
                 });

@@ -45,6 +45,8 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        // TODO: support landscape in camera for new posts, but disable screen rotation for non-camera app activities
+
         ButterKnife.bind(this);
 
         // set up the data store and the adapter
@@ -58,8 +60,7 @@ public class HomeActivity extends AppCompatActivity {
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                // TODO: Fix refresh bug (crash on refreshing w/o changes)
-                if (posts.size() != 0) posts.clear();
+                postAdapter.clear();
                 loadTopPosts();
             }
         });
@@ -89,6 +90,8 @@ public class HomeActivity extends AppCompatActivity {
 
         loadTopPosts();
     }
+
+
 
     public void getCameraPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)

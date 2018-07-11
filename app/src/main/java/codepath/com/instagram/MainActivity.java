@@ -35,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         context = getApplicationContext();
 
+        ParseUser user = ParseUser.getCurrentUser();
+        if (user != null) startActivity(new Intent(this, HomeActivity.class));
+
         btSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
