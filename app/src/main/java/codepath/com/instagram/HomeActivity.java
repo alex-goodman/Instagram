@@ -58,6 +58,8 @@ public class HomeActivity extends AppCompatActivity {
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                // TODO: Fix refresh bug (crash on refreshing w/o changes)
+                if (posts.size() != 0) posts.clear();
                 loadTopPosts();
             }
         });
@@ -123,7 +125,6 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void done(List<Post> objects, ParseException e) {
                 if (e == null) {
-                    posts.clear();
                     for (Post p: objects) {
                         posts.add(0, p);
                         postAdapter.notifyItemInserted(0);
