@@ -12,7 +12,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -36,7 +35,6 @@ public class HomeActivity extends AppCompatActivity {
     @BindView(R.id.swipeContainer) SwipeRefreshLayout swipeContainer;
 
     static final int REQUEST_CAMERA_PERMIT = 10;
-
 
     Context context;
     PostAdapter postAdapter;
@@ -68,7 +66,7 @@ public class HomeActivity extends AppCompatActivity {
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
-        
+
         btCompose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,7 +86,6 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         loadTopPosts();
-        Log.d("Loaded posts", String.valueOf(posts.size()));
     }
 
     public void getCameraPermission() {
@@ -126,9 +123,10 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void done(List<Post> objects, ParseException e) {
                 if (e == null) {
+                    posts.clear();
                     for (Post p: objects) {
-                        posts.add(p);
-                        postAdapter.notifyItemInserted(posts.size() - 1);
+                        posts.add(0, p);
+                        postAdapter.notifyItemInserted(0);
                     }
                     swipeContainer.setRefreshing(false);
                 } else {
