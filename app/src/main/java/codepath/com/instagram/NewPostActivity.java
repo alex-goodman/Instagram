@@ -79,7 +79,6 @@ public class NewPostActivity extends AppCompatActivity {
                         startActivity(i);
                     }
                 });
-
             } else {
                 Log.d("Image capture", "Capture failed");
             }

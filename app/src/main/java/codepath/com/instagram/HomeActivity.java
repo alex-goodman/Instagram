@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +20,7 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -28,10 +31,13 @@ public class HomeActivity extends AppCompatActivity {
 
     @BindView(R.id.btCompose) Button btCompose;
     @BindView(R.id.btLogout) Button btLogout;
+    @BindView(R.id.rvPosts) RecyclerView rvPosts;
 
     static final int REQUEST_CAMERA_PERMIT = 10;
 
     Context context;
+    PostAdapter postAdapter;
+    ArrayList<Post> posts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +46,13 @@ public class HomeActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        context = getApplicationContext();
+        // set up the data store and the adapter
+        posts = new ArrayList<>();
+        postAdapter = new PostAdapter(posts);
+        rvPosts.setLayoutManager(new LinearLayoutManager(this));
+        rvPosts.setAdapter(postAdapter);
 
-        loadTopPosts();
+        context = getApplicationContext();
 
         btCompose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +71,9 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        loadTopPosts();
+        Log.d("Loaded posts", String.valueOf(posts.size()));
     }
 
     public void getCameraPermission() {
@@ -76,7 +89,7 @@ public class HomeActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String permissions[],
                                            @NonNull int[] grantResults) {
-        // Make sure it's our original READ_CONTACTS request
+        // Make sure it's our original CAMERA request
         if (requestCode == REQUEST_CAMERA_PERMIT) {
             if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(this, "Camera permission granted", Toast.LENGTH_SHORT).show();
@@ -99,7 +112,8 @@ public class HomeActivity extends AppCompatActivity {
             public void done(List<Post> objects, ParseException e) {
                 if (e == null) {
                     for (Post p: objects) {
-                        Log.d("HomeActivity", p.getCaption() + " by " + p.getUser().getUsername());
+                        posts.add(p);
+                        postAdapter.notifyItemInserted(posts.size() - 1);
                     }
                 } else {
                     e.printStackTrace();
