@@ -46,7 +46,7 @@ public class TimelineFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // TODO: support landscape in camera for new posts, but disable screen rotation for non-camera app activities
+        // TODO: disable screen rotation for non-camera app activities
 
         context = getActivity();
 

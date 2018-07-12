@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.parse.ParseFile;
 import com.wonderkiln.camerakit.CameraKitError;
@@ -20,28 +19,32 @@ import com.wonderkiln.camerakit.CameraKitImage;
 import com.wonderkiln.camerakit.CameraKitVideo;
 import com.wonderkiln.camerakit.CameraView;
 
-public class NewPost extends Fragment {
+public class CameraFragment extends Fragment {
 
     CameraView camera;
     Button btTake;
+    onPicTakenListener listener;
 
-    public NewPost() {
+    public CameraFragment() {
         // Required empty public constructor
     }
 
+    public interface onPicTakenListener {
+        public void onPicTaken(Bitmap bmp, ParseFile file);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_new_post2, container, false);
+        return inflater.inflate(R.layout.fragment_camera, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         camera = (CameraView) view.findViewById(R.id.camera);
         btTake = (Button) view.findViewById(R.id.btTake);
-
+        listener = (onPicTakenListener) getActivity();
 
         camera.addCameraKitListener(new CameraKitEventListener() {
             @Override
@@ -60,7 +63,7 @@ public class NewPost extends Fragment {
 
                 // Create a bitmap
                 Bitmap result = cameraKitImage.getBitmap();
-                Toast.makeText(getActivity(), "Noice.", Toast.LENGTH_LONG).show();
+                listener.onPicTaken(result, photoFile);
             }
 
             @Override
