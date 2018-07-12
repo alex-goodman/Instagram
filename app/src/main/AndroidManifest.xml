@@ -40,7 +40,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".HomeActivity" />
-        <activity android:name=".NewPostActivity" />
         <activity android:name=".DetailActivity"></activity>
     </application>
 
