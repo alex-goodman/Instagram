@@ -67,14 +67,19 @@ public class NewPostFragment extends Fragment {
         ivPreview = view.findViewById(R.id.ivPreview);
         etCaption = view.findViewById(R.id.etCaption);
 
-        // send to camera right away
-        Intent takePicIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        photoFile = getPhotoFileUri(photoFileName);
-        Uri fileProvider = FileProvider.getUriForFile(context, "com.codepath.fileprovider", photoFile);
-        takePicIntent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider);
-        if (takePicIntent.resolveActivity(getActivity().getPackageManager()) != null) {
-            startActivityForResult(takePicIntent, REQUEST_PIC_CAPTURE);
-        }
+        ivPreview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // send to camera
+                Intent takePicIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                photoFile = getPhotoFileUri(photoFileName);
+                Uri fileProvider = FileProvider.getUriForFile(context, "com.codepath.fileprovider", photoFile);
+                takePicIntent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider);
+                if (takePicIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+                    startActivityForResult(takePicIntent, REQUEST_PIC_CAPTURE);
+                }
+            }
+        });
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

@@ -11,30 +11,30 @@
         android:layout_width="276dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="143dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="52dp"
         android:ems="10"
         android:hint="Caption"
-        android:inputType="textPersonName" />
+        android:inputType="textMultiLine" />
 
     <ImageView
         android:id="@+id/ivPreview"
-        android:layout_width="200dp"
+        android:layout_width="209dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="43dp"
+        android:layout_marginTop="33dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
-        />
+        android:src="@drawable/camera_shadow_fill" />
 
     <Button
         android:id="@+id/btNewPost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="68dp"
+        android:layout_alignBottom="@+id/etCaption"
+        android:layout_alignParentEnd="true"
         android:text="Post!" />
+
 
 </RelativeLayout>
