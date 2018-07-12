@@ -23,7 +23,8 @@ public class HomeActivity extends AppCompatActivity {
 
         final FragmentManager fragmentManager = getSupportFragmentManager();
         final Fragment timelineFragment = new TimelineFragment();
-        final Fragment newPostFragment = new NewPostFragment();
+        //final Fragment newPostFragment = new NewPostFragment();
+        final Fragment newPostFragment = new NewPost();
 
         bnv = findViewById(R.id.bnv);
 

@@ -27,7 +27,7 @@ public class DetailActivity extends AppCompatActivity {
 
         Post post = Parcels.unwrap(getIntent().getParcelableExtra("post"));
 
-        tvUsername.setText(post.getUser().getUsername());
+        tvUsername.setText("@" + post.getUser().getUsername());
         tvCaption.setText(post.getCaption());
         tvTime.setText(post.getDate());
         GlideApp.with(this).load(post.getImage().getUrl()).into(ivPicture);
