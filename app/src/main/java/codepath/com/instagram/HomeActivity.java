@@ -21,11 +21,14 @@ import codepath.com.instagram.models.Post;
 public class HomeActivity extends AppCompatActivity implements
         PostAdapter.onItemSelectedListener,
         CameraFragment.onPicTakenListener,
-        CreatePostFragment.onNewPostListener {
+        CreatePostFragment.onNewPostListener,
+        ProfileFragment.onActionClickListener{
+
+    public static final int FROM_PROF_CODE = 10;
+    public static final int NEW_POST_CODE = 20;
 
     BottomNavigationView bnv;
     CreatePostFragment createPostFragment;
-    DetailFragment detailFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,8 @@ public class HomeActivity extends AppCompatActivity implements
         final FragmentManager fragmentManager = getSupportFragmentManager();
         final Fragment timelineFragment = new TimelineFragment();
         final Fragment cameraFragment = new CameraFragment();
+        final Fragment profileFragment = new ProfileFragment();
+
 
         bnv = findViewById(R.id.bnv);
 
@@ -42,11 +47,15 @@ public class HomeActivity extends AppCompatActivity implements
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.logout:
-                        ParseUser.logOut();
-                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(i);
-                        finish();
+//                    case R.id.logout:
+//                        ParseUser.logOut();
+//                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+//                        startActivity(i);
+//                        finish();
+//                        return true;
+                    case R.id.profile:
+                        FragmentTransaction ft2 = fragmentManager.beginTransaction();
+                        ft2.replace(R.id.placeholder, profileFragment).commit();
                         return true;
                     case R.id.home:
                         FragmentTransaction ft = fragmentManager.beginTransaction();
@@ -82,7 +91,36 @@ public class HomeActivity extends AppCompatActivity implements
     }
 
     @Override
+    public void onProfPicTaken(Bitmap bmp, ParseFile file) {
+        ProfileFragment profFrag = new ProfileFragment();
+        ParseUser user = ParseUser.getCurrentUser();
+
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.placeholder, profFrag).commit();
+        profFrag.setProfilePic(bmp, file);
+    }
+
+    @Override
     public void onNewPost() {
         bnv.setSelectedItemId(R.id.home);
+    }
+
+    @Override
+    public void onActionClick() {
+        CameraFragment camFrag = new CameraFragment();
+
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.placeholder, camFrag).commit();
+        camFrag.setup(FROM_PROF_CODE);
+    }
+
+    @Override
+    public void onLogoutClick() {
+        ParseUser.logOut();
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(i);
+        finish();
     }
 }
