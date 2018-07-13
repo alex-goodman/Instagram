@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:theme="@style/LoginTheme"
+    android:id="@+id/rLayout"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/ivIGLogo"
+        android:layout_width="175dp"
+        android:layout_height="79dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="62dp"
+        app:srcCompat="@drawable/instalogo" />
+
+    <EditText
+        android:id="@+id/etUsername"
+        android:layout_width="313dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivIGLogo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"
+        android:background="@drawable/shaded_rounded"
+        android:ems="10"
+        android:hint="Username"
+        android:inputType="textPersonName"
+        android:padding="13dp" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="313dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/etUsername"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shaded_rounded"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPersonName"
+        android:padding="13dp" />
+
+    <Button
+        android:id="@+id/btLogin"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="315dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etPassword"
+        android:layout_marginTop="17dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignStart="@id/etPassword"
+        android:layout_alignEnd="@id/etPassword"
+        android:background="@drawable/rounded"
+        android:text="Log in"
+        android:textAllCaps="false"
+        android:textColor="#55FFFFFF"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/tvOr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btLogin"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="Robota"
+        android:text="OR"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/leftDivider"
+        android:layout_width="135dp"
+        android:layout_height="1dp"
+        android:layout_alignStart="@+id/etPassword"
+        android:layout_alignTop="@+id/line3"
+        android:background="#33FFFFFF" />
+
+    <View
+        android:id="@+id/line3"
+        android:layout_width="135dp"
+        android:layout_height="1dp"
+        android:layout_alignEnd="@+id/etPassword"
+        android:layout_below="@id/btLogin"
+        android:layout_marginTop="30dp"
+        android:background="#33FFFFFF" />
+
+
+    <Button
+        android:id="@+id/btSignUp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="315dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/tvOr"
+        android:layout_marginTop="20dp"
+        android:layout_alignStart="@id/etPassword"
+        android:layout_alignEnd="@id/etPassword"
+        android:background="@drawable/rounded"
+        android:text="Create an account"
+        android:textAllCaps="false"
+        android:textColor="#55FFFFFF"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btSignUp"
+        android:layout_alignStart="@id/btSignUp"
+        android:layout_alignEnd="@id/btSignUp"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shaded_rounded"
+        android:padding="13dp" />
+
+</RelativeLayout>

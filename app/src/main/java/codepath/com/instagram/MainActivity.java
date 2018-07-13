@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.parse.LogInCallback;
@@ -25,15 +26,17 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.btLogin) Button btLogin;
     @BindView(R.id.btSignUp) Button btSignUp;
 
+    RelativeLayout layout;
     Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         ButterKnife.bind(this);
         context = getApplicationContext();
+        layout = (RelativeLayout) findViewById(R.id.rLayout);
 
         ParseUser user = ParseUser.getCurrentUser();
         if (user != null) startActivity(new Intent(this, HomeActivity.class));
@@ -45,6 +48,10 @@ public class MainActivity extends AppCompatActivity {
                 String username = etUsername.getText().toString();
                 String password = etPassword.getText().toString();
                 String email = etEmail.getText().toString();
+
+                if (username == "" || password == "" || email == "") {
+                    Toast.makeText(context, "Please fill all three fields", Toast.LENGTH_SHORT);
+                }
 
                 // create a new user with the above attributes
                 signUp(username, password, email);
