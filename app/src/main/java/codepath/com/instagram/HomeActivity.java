@@ -19,7 +19,9 @@ import org.parceler.Parcels;
 import codepath.com.instagram.models.Post;
 
 public class HomeActivity extends AppCompatActivity implements
-        PostAdapter.onItemSelectedListener, CameraFragment.onPicTakenListener {
+        PostAdapter.onItemSelectedListener,
+        CameraFragment.onPicTakenListener,
+        CreatePostFragment.onNewPostListener {
 
     BottomNavigationView bnv;
     CreatePostFragment createPostFragment;
@@ -77,5 +79,10 @@ public class HomeActivity extends AppCompatActivity implements
         FragmentTransaction ft = fm.beginTransaction();
         ft.replace(R.id.placeholder, createPostFragment).commit();
         createPostFragment.setup(bmp, file);
+    }
+
+    @Override
+    public void onNewPost() {
+        bnv.setSelectedItemId(R.id.home);
     }
 }

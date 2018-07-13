@@ -30,9 +30,14 @@ public class CreatePostFragment extends Fragment {
     Button btNewPost;
     ParseFile photoFile;
     Bitmap preview;
+    onNewPostListener listener;
 
     public CreatePostFragment() {
         // Required empty public constructor
+    }
+
+    public interface onNewPostListener {
+        public void onNewPost();
     }
 
     @Override
@@ -47,6 +52,7 @@ public class CreatePostFragment extends Fragment {
         ivPreview = (ImageView) view.findViewById(R.id.ivPreview);
         etCaption = (EditText) view.findViewById(R.id.etCaption);
         btNewPost = (Button) view.findViewById(R.id.btNewPost);
+        listener = (onNewPostListener) getActivity();
 
         ivPreview.setImageBitmap(preview);
 
@@ -54,7 +60,6 @@ public class CreatePostFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 createPost(etCaption.getText().toString(), photoFile, ParseUser.getCurrentUser());
-                // TODO: send back to timeline activity
             }
         });
     }
@@ -76,6 +81,7 @@ public class CreatePostFragment extends Fragment {
                 if (e == null) {
                     Toast.makeText(getActivity(), "created new post!", Toast.LENGTH_SHORT).show();
                     Log.d("PostAction", "Successful post");
+                    listener.onNewPost();
                 } else {
                     e.printStackTrace();
                     Log.d("PostAction", "Failed");
