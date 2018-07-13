@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.parse.ParseFile;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -44,11 +46,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Post post = mPosts.get(position);
+        ParseFile photoFile = post.getUser().getParseFile("profPic");
 
         // populate the views according to the post
         holder.tvUsername.setText(post.getUser().getUsername());
         holder.tvCaption.setText(post.getCaption());
 
+        if (photoFile != null) GlideApp.with(context).load(photoFile.getUrl()).into(holder.ivProfPic);
         GlideApp.with(context).load(post.getImage().getUrl()).into(holder.ivPic);
     }
 
@@ -71,6 +75,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         @BindView(R.id.ivPic) ImageView ivPic;
         @BindView(R.id.tvUsername) TextView tvUsername;
         @BindView(R.id.tvCaption) TextView tvCaption;
+        @BindView(R.id.ivProfPic) ImageView ivProfPic;
 
         public ViewHolder(View itemView) {
             super(itemView);

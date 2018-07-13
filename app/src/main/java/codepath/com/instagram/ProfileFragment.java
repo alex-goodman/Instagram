@@ -88,4 +88,6 @@ public class ProfileFragment extends Fragment {
         profPic = file;
         newProfPic = 1;
     }
+
+
 }

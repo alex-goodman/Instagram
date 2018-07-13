@@ -8,10 +8,9 @@
 
     <ImageView
         android:id="@+id/ivPic"
-        android:layout_width="100dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:layout_below="@id/ivProfPic"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
         app:srcCompat="@android:drawable/ic_lock_power_off" />
@@ -20,16 +19,28 @@
         android:id="@+id/tvUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/ivProfPic"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/ivPic"
+        android:gravity="center_vertical"
+        android:layout_toEndOf="@id/ivProfPic"
+        android:layout_marginLeft="10dp"
         android:text="TextView"
-        android:textSize="14sp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tvCaption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvUsername"
-        android:layout_toEndOf="@+id/ivPic"
+        android:layout_below="@id/ivPic"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
         android:text="TextView" />
+
+    <ImageView
+        android:id="@+id/ivProfPic"
+        android:layout_width="43dp"
+        android:layout_height="43dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        app:srcCompat="@drawable/ic_instagram_profile" />
 </RelativeLayout>

@@ -22,16 +22,18 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/ivProfPic"
         android:layout_toEndOf="@id/ivProfPic"
-        android:layout_marginLeft="20dp"
+        android:layout_alignStart="@id/btLogout"
         android:text="TextView"
         android:textSize="18sp"/>
 
     <Button
         android:id="@+id/btLogout"
-        android:layout_width="241dp"
+        android:layout_width="wrap_content"
         android:layout_height="36dp"
-        android:layout_alignStart="@+id/tvUsername"
-        android:layout_below="@+id/tvUsername"
-        android:layout_marginTop="10dp"
+        android:layout_alignBottom="@+id/ivProfPic"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="27dp"
+        android:layout_toEndOf="@id/ivProfPic"
+        android:layout_marginStart="27dp"
         android:text="Log out" />
 </RelativeLayout>

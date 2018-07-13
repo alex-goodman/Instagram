@@ -47,12 +47,6 @@ public class HomeActivity extends AppCompatActivity implements
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-//                    case R.id.logout:
-//                        ParseUser.logOut();
-//                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-//                        startActivity(i);
-//                        finish();
-//                        return true;
                     case R.id.profile:
                         FragmentTransaction ft2 = fragmentManager.beginTransaction();
                         ft2.replace(R.id.placeholder, profileFragment).commit();
