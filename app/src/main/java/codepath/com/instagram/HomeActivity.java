@@ -14,6 +14,8 @@ import android.view.MenuItem;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
 
+import org.parceler.Parcels;
+
 import codepath.com.instagram.models.Post;
 
 public class HomeActivity extends AppCompatActivity implements
@@ -62,12 +64,9 @@ public class HomeActivity extends AppCompatActivity implements
 
     @Override
     public void onItemSelected(Post post) {
-        detailFragment = new DetailFragment();
-
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.placeholder, detailFragment).commit();
-        detailFragment.setup(post);
+        Intent i = new Intent(this, DetailActivity.class);
+        i.putExtra("post", Parcels.wrap(post));
+        startActivity(i);
     }
 
     @Override

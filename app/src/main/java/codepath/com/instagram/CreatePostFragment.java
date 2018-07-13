@@ -54,6 +54,7 @@ public class CreatePostFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 createPost(etCaption.getText().toString(), photoFile, ParseUser.getCurrentUser());
+                // TODO: send back to timeline activity
             }
         });
     }

@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import codepath.com.instagram.models.Post;
 
@@ -46,7 +45,6 @@ public class DetailFragment extends Fragment {
         tvCaption.setText(currentPost.getCaption());
         tvTime.setText(currentPost.getDate());
         GlideApp.with(this).load(currentPost.getImage().getUrl()).into(ivPicture);
-        Toast.makeText(getActivity(), "Wheeeee", Toast.LENGTH_LONG).show();
     }
 
     public void setup(Post post) {
