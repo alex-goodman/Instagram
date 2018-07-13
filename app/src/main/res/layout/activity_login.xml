@@ -29,7 +29,8 @@
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"
-        android:padding="13dp" />
+        android:padding="13dp"
+        android:textColor="@android:color/white"/>
 
     <EditText
         android:id="@+id/etPassword"
@@ -41,8 +42,9 @@
         android:background="@drawable/shaded_rounded"
         android:ems="10"
         android:hint="Password"
-        android:inputType="textPersonName"
-        android:padding="13dp" />
+        android:inputType="textPassword"
+        android:padding="13dp"
+        android:textColor="@android:color/white"/>
 
     <Button
         android:id="@+id/btLogin"
@@ -119,6 +121,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:background="@drawable/shaded_rounded"
-        android:padding="13dp" />
+        android:padding="13dp"
+        android:textColor="@android:color/white"/>
 
 </RelativeLayout>

@@ -83,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void done(ParseException e) {
                 if (e == null) {
-                    Toast.makeText(getApplicationContext(), "signup successful!", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(context, HomeActivity.class);
                     startActivity(i);
                     finish();
@@ -99,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void done(ParseUser user, ParseException e) {
                 if (user != null) {
-                    Toast.makeText(context, "login successful", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(context, HomeActivity.class);
                     startActivity(i);
                     finish();
