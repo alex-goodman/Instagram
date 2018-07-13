@@ -20,6 +20,7 @@ import codepath.com.instagram.models.Post;
 
 public class HomeActivity extends AppCompatActivity implements
         PostAdapter.onItemSelectedListener,
+        ProfAdapter.onItemSelectedListener,
         CameraFragment.onPicTakenListener,
         CreatePostFragment.onNewPostListener,
         ProfileFragment.onActionClickListener{

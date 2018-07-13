@@ -67,6 +67,10 @@ public class ProfileFragment extends Fragment {
         rvProf = (RecyclerView) view.findViewById(R.id.rvProf);
         rvProf.setLayoutManager(new GridLayoutManager(getActivity(), 3, LinearLayoutManager.VERTICAL, false));
         rvProf.setAdapter(adapter);
+
+        // add spacing
+        SpacesItemDecoration decoration = new SpacesItemDecoration(28);
+        rvProf.addItemDecoration(decoration);
         loadProfPosts();
 
         user = ParseUser.getCurrentUser();

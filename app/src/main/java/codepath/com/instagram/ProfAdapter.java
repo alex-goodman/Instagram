@@ -18,9 +18,14 @@ public class ProfAdapter extends RecyclerView.Adapter<ProfAdapter.ViewHolder> {
 
     Context context;
     private static List<Post> mPosts;
+    static onItemSelectedListener listener;
 
     public ProfAdapter(List<Post> posts) {
         mPosts = posts;
+    }
+
+    public interface onItemSelectedListener {
+        public void onItemSelected(Post post);
     }
 
     @NonNull
@@ -28,6 +33,7 @@ public class ProfAdapter extends RecyclerView.Adapter<ProfAdapter.ViewHolder> {
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
+        listener = (onItemSelectedListener) context;
 
         View profView = inflater.inflate(R.layout.item_prof, parent, false);
         ProfAdapter.ViewHolder viewHolder = new ProfAdapter.ViewHolder(profView);
@@ -54,6 +60,15 @@ public class ProfAdapter extends RecyclerView.Adapter<ProfAdapter.ViewHolder> {
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    Post post = mPosts.get(position);
+                    listener.onItemSelected(post);
+                }
+            });
         }
     }
 }
