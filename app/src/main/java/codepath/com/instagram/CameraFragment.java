@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import com.parse.ParseFile;
 import com.wonderkiln.camerakit.CameraKitError;
@@ -45,6 +46,18 @@ public class CameraFragment extends Fragment {
         camera = (CameraView) view.findViewById(R.id.camera);
         btTake = (Button) view.findViewById(R.id.btTake);
         listener = (onPicTakenListener) getActivity();
+        final RelativeLayout layout = (RelativeLayout) view.findViewById(R.id.relLay);
+
+        // make the camera square
+        layout.post(new Runnable() {
+            @Override
+            public void run() {
+                ViewGroup.LayoutParams params = camera.getLayoutParams();
+                params.height = camera.getWidth();
+                camera.setLayoutParams(params);
+                layout.postInvalidate();
+            }
+        });
 
         camera.addCameraKitListener(new CameraKitEventListener() {
             @Override
