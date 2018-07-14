@@ -52,6 +52,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         // populate the views according to the post
         holder.tvUsername.setText(post.getUser().getUsername());
         holder.tvCaption.setText(post.getCaption());
+        holder.tvTime.setText(post.getDate());
 
         if (photoFile != null) {
             GlideApp.with(context).load(photoFile.getUrl()).transform(new CircleCrop()).into(holder.ivProfPic);
@@ -79,6 +80,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         @BindView(R.id.tvUsername) TextView tvUsername;
         @BindView(R.id.tvCaption) TextView tvCaption;
         @BindView(R.id.ivProfPic) ImageView ivProfPic;
+        @BindView(R.id.tvTime) TextView tvTime;
 
         public ViewHolder(View itemView) {
             super(itemView);
