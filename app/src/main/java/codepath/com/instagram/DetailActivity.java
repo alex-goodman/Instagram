@@ -14,6 +14,7 @@ public class DetailActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
         DetailFragment detFrag = new DetailFragment();
 
         Post post = Parcels.unwrap(getIntent().getParcelableExtra("post"));

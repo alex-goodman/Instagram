@@ -96,10 +96,10 @@ public class CameraFragment extends Fragment {
 
                 // Create a bitmap, pass origin code into listener
                 Bitmap result = cameraKitImage.getBitmap();
-                if (originCode == HomeActivity.NEW_POST_CODE) {
-                    listener.onPicTaken(result, photoFile);
-                } else {
+                if (originCode == HomeActivity.FROM_PROF_CODE) {
                     listener.onProfPicTaken(result, photoFile);
+                } else {
+                    listener.onPicTaken(result, photoFile);
                 }
             }
 

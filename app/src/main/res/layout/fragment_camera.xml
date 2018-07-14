@@ -17,11 +17,10 @@
     <Button
         android:id="@+id/btTake"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="68dp"
-        android:layout_marginStart="69dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/camera"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="32dp"
         android:focusable="false"
         android:text="Snap" />
 
@@ -29,10 +28,10 @@
         android:id="@+id/ivFlip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignTop="@id/btTake"
         android:layout_alignBottom="@id/btTake"
-        android:layout_marginEnd="85dp"
-        android:src="@drawable/ic_refresh_black_24dp" />
+        android:layout_marginStart="100dp"
+        android:layout_toEndOf="@id/btTake"
+        app:srcCompat="@drawable/ic_refresh_black_24dp" />
 
 </RelativeLayout>

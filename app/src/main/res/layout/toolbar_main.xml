@@ -1,0 +1,10 @@
+<android.support.v7.widget.Toolbar android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:contentInsetLeft="140dp"
+    app:contentInsetStart="140dp"
+    app:contentInsetRight="100dp"
+    app:contentInsetEnd="100dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+</android.support.v7.widget.Toolbar>
