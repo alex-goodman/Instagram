@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -95,7 +96,7 @@ public class ProfileFragment extends Fragment {
             user.saveInBackground();
         } else {
             // look for old prof pic
-            if (file != null) GlideApp.with(view).load(file.getUrl()).into(ivProfPic);
+            if (file != null) GlideApp.with(view).load(file.getUrl()).transform(new CircleCrop()).into(ivProfPic);
         }
 
         ivProfPic.setOnClickListener(new View.OnClickListener() {

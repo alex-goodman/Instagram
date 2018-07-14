@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.parse.ParseFile;
 
 import java.util.List;
@@ -52,7 +53,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         holder.tvUsername.setText(post.getUser().getUsername());
         holder.tvCaption.setText(post.getCaption());
 
-        if (photoFile != null) GlideApp.with(context).load(photoFile.getUrl()).into(holder.ivProfPic);
+        if (photoFile != null) {
+            GlideApp.with(context).load(photoFile.getUrl()).transform(new CircleCrop()).into(holder.ivProfPic);
+        }
         GlideApp.with(context).load(post.getImage().getUrl()).into(holder.ivPic);
     }
 

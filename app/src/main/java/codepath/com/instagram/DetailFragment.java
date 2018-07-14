@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+
 import codepath.com.instagram.models.Post;
 
 
@@ -19,6 +21,7 @@ public class DetailFragment extends Fragment {
     Post currentPost;
     TextView tvUsername;
     ImageView ivPicture;
+    ImageView ivProfPic;
     TextView tvCaption;
     TextView tvTime;
 
@@ -40,11 +43,19 @@ public class DetailFragment extends Fragment {
         ivPicture = (ImageView) view.findViewById(R.id.ivPicture);
         tvCaption = (TextView) view.findViewById(R.id.tvCaption);
         tvTime = (TextView) view.findViewById(R.id.tvTime);
+        ivProfPic = (ImageView) view.findViewById(R.id.ivProfPic);
 
-        tvUsername.setText("@" + currentPost.getUser().getUsername());
+        tvUsername.setText(currentPost.getUser().getUsername());
         tvCaption.setText(currentPost.getCaption());
         tvTime.setText(currentPost.getDate());
-        GlideApp.with(this).load(currentPost.getImage().getUrl()).into(ivPicture);
+        GlideApp.with(this)
+                .load(currentPost.getImage().getUrl())
+                .into(ivPicture);
+        GlideApp.with(this)
+                .load(currentPost.getUser().getParseFile("profPic").getUrl())
+                .transform(new CircleCrop())
+                .into(ivProfPic);
+
     }
 
     public void setup(Post post) {
